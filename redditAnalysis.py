@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Read the CSV file with tab delimiter and handling spaces in column names
-df = pd.read_csv('rklb.csv', delimiter='\t', skipinitialspace=True)
+df = pd.read_csv('data.csv', delimiter='\t', skipinitialspace=True)
 
 # Clean column names by removing any leading/trailing spaces
 df.columns = df.columns.str.strip()
@@ -19,8 +19,8 @@ weekly_groups = df.groupby(pd.Grouper(key='Date', freq='W-FRI'))
 weekly_changes = []
 for name, group in weekly_groups:
     if not group.empty:
-        week_start_price = group['Close'].iloc[0]
-        week_end_price = group['Close'].iloc[-1]
+        week_start_price = group['Open'].iloc[0]
+        week_end_price = group['Open'].iloc[-1]
         pct_change = ((week_end_price - week_start_price) / week_start_price) * 100
         weekly_changes.append({
             'Week_Start': group['Date'].iloc[0].strftime('%Y-%m-%d'),
