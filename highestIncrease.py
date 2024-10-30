@@ -82,7 +82,7 @@ if weekly_results:
     # Create summary tables for both metrics
     print("\nSummary Table - Top 10 Increases from Monday Open:")
     print("================================================")
-    summary_open = top_10_open[['Week_Start', 'Pct_Increase_From_Open', 'Monday_Open', 'Week_High', 'High_Date']]
+    summary_open = top_10_open[['Week_Start', 'Pct_Increase_From_Open', 'Monday_Open', 'Week_High',3 'High_Date']]
     summary_open.index = range(1, 11)
     print(summary_open.to_string())
 
